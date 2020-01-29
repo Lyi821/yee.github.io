@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audio Guide</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            width: 100%;
+            background: #141414;
+            background-image: url("./public/img/bg.png" );
+            background-size: 360px;
+            background-repeat:no-repeat;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        .header {
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 42px;
+            font-family: DIN Condensed Bold;
+            color: #141414;
+        }
+
+        .main {
+            width: 300px;
+            height: 300px;
+            border: 1px solid transparent;
+            margin: 0 auto;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .main>div {
+            width: 100px;
+            height: 90px;
+            border: 1px solid transparent;
+            position: absolute;
+        }
+
+        .div1 {
+            background: url("./public/img/01.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            left: 100px;
+            top: 10px;
+        }
+
+        .div2 {
+            background: url("./public/img/02.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            left: 175px;
+            top: 55px;
+        }
+
+        .div3 {
+            background: url("./public/img/03.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            left: 175px;
+            top: 145px;
+        }
+
+        .div4 {
+            background: url("./public/img/04.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            left: 100px;
+            top: 190px;
+        }
+
+        .div5 {
+            background: url("./public/img/05.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            left: 25px;
+            top: 145px;
+        }
+
+        .div6 {
+            background: url("./public/img/06.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            left: 100px;
+            top: 100px;
+        }
+
+        .div1center,
+        .div2center,
+        .div3center,
+        .div4center,
+        .div5center,
+        .div6center {
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            margin: 15px auto;
+        }
+
+
+       /*.footer {
+            width: 40px;
+            height: 40px;
+            background: url("./public/img/07.png");
+            background-size: 100% 100%;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        */
+    </style>
+</head>
+
+<body>
+
+    <!-- header -->
+    <p class="header">
+    </br>
+    </p>
+
+
+    <!-- body -->
+    <div class="main">
+
+        <div class="div1">
+            <div class="div1center"></div>
+        </div>
+        <div class="div2">
+            <div class="div2center"></div>
+        </div>
+        <div class="div3">
+            <div class="div3center"></div>
+        </div>
+        <div class="div4">
+            <div class="div4center"></div>
+        </div>
+        <div class="div5">
+            <div class="div5center"></div>
+        </div>
+        <div class="div6">
+            <div class="div6center"></div>
+        </div>
+
+    </div>
+
+
+    <!-- footer -->
+    <div class="footer"></div>
+
+
+    <!-- audio -->
+    <audio class="audio"></audio>
+
+    <script>
+
+        let div1center = document.getElementsByClassName("div1center")[0]
+        let div2center = document.getElementsByClassName("div2center")[0]
+        let div3center = document.getElementsByClassName("div3center")[0]
+        let div4center = document.getElementsByClassName("div4center")[0]
+        let div5center = document.getElementsByClassName("div5center")[0]
+        let div6center = document.getElementsByClassName("div6center")[0]
+        let div1 = document.getElementsByClassName("div1")[0]
+        let div2 = document.getElementsByClassName("div2")[0]
+        let div3 = document.getElementsByClassName("div3")[0]
+        let div4 = document.getElementsByClassName("div4")[0]
+        let div5 = document.getElementsByClassName("div5")[0]
+        let div6 = document.getElementsByClassName("div6")[0]
+        let audio = document.getElementsByClassName("audio")[0]
+
+        let KaiGuan1 = "暂停"
+        let KaiGuan2 = "暂停"
+        let KaiGuan3 = "暂停"
+        let KaiGuan4 = "暂停"
+        let KaiGuan5 = "暂停"
+        let KaiGuan6 = "暂停"
+
+        div1center.onclick = function () {
+            if (KaiGuan1 == "暂停") {
+
+                if (audio.getAttribute("src") == "./public/audio/01.mp3") {
+                    audio.play()
+                    BG(div1)
+                    KaiGuan1 = "播放"
+                } else {
+                    audio.src = "./public/audio/01.mp3"
+                    audio.play()
+                    BG(div1)
+                    KaiGuan1 = "播放"
+                }
+
+            }
+            else {
+                BG()
+                audio.pause()
+            }
+        }
+
+        div2center.onclick = function () {
+            if (KaiGuan2 == "暂停") {
+
+                if (audio.getAttribute("src") == "./public/audio/02.mp3") {
+                    audio.play()
+                    BG(div2)
+                    KaiGuan2 = "播放"
+                } else {
+                    audio.src = "./public/audio/02.mp3"
+                    audio.play()
+                    BG(div2)
+                    KaiGuan2 = "播放"
+                }
+
+            }
+            else {
+                BG()
+                audio.pause()
+            }
+        }
+
+        div3center.onclick = function () {
+            if (KaiGuan3 == "暂停") {
+
+                if (audio.getAttribute("src") == "./public/audio/03.mp3") {
+                    audio.play()
+                    BG(div3)
+                    KaiGuan3 = "播放"
+                } else {
+                    audio.src = "./public/audio/03.mp3"
+                    audio.play()
+                    BG(div3)
+                    KaiGuan3 = "播放"
+                }
+
+            }
+            else {
+                BG()
+                audio.pause()
+            }
+
+        }
+
+        div4center.onclick = function () {
+
+            if (KaiGuan4 == "暂停") {
+
+                if (audio.getAttribute("src") == "./public/audio/04.mp3") {
+                    audio.play()
+                    BG(div4)
+                    KaiGuan4 = "播放"
+                } else {
+                    audio.src = "./public/audio/04.mp3"
+                    audio.play()
+                    BG(div4)
+                    KaiGuan4 = "播放"
+                }
+
+            }
+            else {
+                BG()
+                audio.pause()
+            }
+        }
+
+        div5center.onclick = function () {
+            if (KaiGuan5 == "暂停") {
+
+                if (audio.getAttribute("src") == "./public/audio/05.mp3") {
+                    audio.play()
+                    BG(div5)
+                    KaiGuan5 = "播放"
+                } else {
+                    audio.src = "./public/audio/05.mp3"
+                    audio.play()
+                    BG(div5)
+                    KaiGuan5 = "播放"
+                }
+
+            }
+            else {
+                BG()
+                audio.pause()
+            }
+        }
+
+        div6center.onclick = function () {
+
+            if (KaiGuan6 == "暂停") {
+
+                if (audio.getAttribute("src") == "./public/audio/06.mp3") {
+                    audio.play()
+                    BG(div6)
+                    KaiGuan6 = "播放"
+                } else {
+                    audio.src = "./public/audio/06.mp3"
+                    audio.play()
+                    BG(div6)
+                    KaiGuan6 = "播放"
+                }
+
+            }
+            else {
+                BG()
+                audio.pause()
+            }
+        }
+
+        function BG(item) {
+
+            if (arguments.length == 1) {
+                div1.style.background = "url(./public/img/01.png)"
+                div1.style.backgroundSize = "100% 100%"
+                div2.style.background = "url(./public/img/02.png)"
+                div2.style.backgroundSize = "100% 100%"
+                div3.style.background = "url(./public/img/03.png)"
+                div3.style.backgroundSize = "100% 100%"
+                div4.style.background = "url(./public/img/04.png)"
+                div4.style.backgroundSize = "100% 100%"
+                div5.style.background = "url(./public/img/05.png)"
+                div5.style.backgroundSize = "100% 100%"
+                div6.style.background = "url(./public/img/06.png)"
+                div6.style.backgroundSize = "100% 100%"
+                item.style.background = "url(./public/img/08.png)"
+                item.style.backgroundSize = "100% 100%"
+                KaiGuan1 = "暂停"
+                KaiGuan2 = "暂停"
+                KaiGuan3 = "暂停"
+                KaiGuan4 = "暂停"
+                KaiGuan5 = "暂停"
+                KaiGuan6 = "暂停"
+            }
+
+            if (arguments.length == 0) {
+                div1.style.background = "url(./public/img/01.png)"
+                div1.style.backgroundSize = "100% 100%"
+                div2.style.background = "url(./public/img/02.png)"
+                div2.style.backgroundSize = "100% 100%"
+                div3.style.background = "url(./public/img/03.png)"
+                div3.style.backgroundSize = "100% 100%"
+                div4.style.background = "url(./public/img/04.png)"
+                div4.style.backgroundSize = "100% 100%"
+                div5.style.background = "url(./public/img/05.png)"
+                div5.style.backgroundSize = "100% 100%"
+                div6.style.background = "url(./public/img/06.png)"
+                div6.style.backgroundSize = "100% 100%"
+                KaiGuan1 = "暂停"
+                KaiGuan2 = "暂停"
+                KaiGuan3 = "暂停"
+                KaiGuan4 = "暂停"
+                KaiGuan5 = "暂停"
+                KaiGuan6 = "暂停"
+            }
+
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
